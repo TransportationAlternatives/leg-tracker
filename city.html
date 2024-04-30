@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Transportation Alternatives Policy</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://unpkg.com/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+	<script src="https://unpkg.com/sheetrock@1.2.0/dist/sheetrock.min.js"></script>
+	<link rel="stylesheet" href="https://use.typekit.net/zic5jea.css">
+
+	<style type="text/css">
+		body {
+				font-family: trade-gothic-next, 'Montserrat', sans-serif;
+		}
+		h5 {
+			font-weight: 700;
+		}
+		.isDisabled {
+		  color: currentColor;
+		  cursor: not-allowed;
+		  opacity: 0.5;
+		  text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="contain" id="hr">
+	  <script id="hr-template" type="text/x-handlebars-template">
+
+			    <div class="card mb-3" style="">
+				  <div class="card-body">
+				    <h5 class="card-title">{{cells.ShortName}} <span class="badge text-bg-secondary">{{cells.Status}}</span></h5>
+				    <p class="card-text ">{{cells.Description}}</p>
+				    <span>Bill number: <a href="#" class="card-link {{cells.ActiveBill}}">{{cells.Bill}}</a></span>
+				    <span class="px-3">Petition: <a href="#" class="card-link {{cells.ActivePetition}}">{{cells.Bill}}</a></span>
+				  </div>
+				</div>
+			
+	  </script>
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/handlebars@4.5.0/dist/handlebars.min.js"></script>
+
+	<script type="text/javascript">
+var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1Eih1OKk-FIX5fQ4pUhjPjSWbchhn0j0OYOxXdGnG0Bc/edit#gid=0';
+
+// Compile the Handlebars template for HR leaders.
+var HRTemplate = Handlebars.compile($('#hr-template').html());
+
+// Load top five HR leaders.
+$('#hr').sheetrock({
+  url: mySpreadsheet,
+  query: "select A,B,C,D,E,G,H, F order by F desc",
+  rowTemplate: HRTemplate
+});
+	</script>
+</body>
+</html>
