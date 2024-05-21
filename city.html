@@ -19,10 +19,23 @@
 			font-weight: 700;
 		}
 		.isDisabled {
-		  color: currentColor;
-		  cursor: not-allowed;
-		  opacity: 0.5;
-		  text-decoration: none;
+		  display: none;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.btn-primary {
+			text-transform: uppercase;
+			background-color: #f15d22;
+			border: #f15d22;
+		}
+
+		.btn-primary:hover {
+			text-transform: uppercase;
+			background-color: #B35D22;
+			border: #B35D22;
 		}
 	</style>
 </head>
@@ -35,8 +48,8 @@
 				  <div class="card-body">
 				    <h5 class="card-title">{{cells.ShortName}} <span class="badge text-bg-secondary">{{cells.Status}}</span></h5>
 				    <p class="card-text ">{{cells.Description}}</p>
-				    <span>Bill number: <a href="#" class="card-link {{cells.ActiveBill}}">{{cells.Bill}}</a></span>
-				    <span class="px-3">Petition: <a href="#" class="card-link {{cells.ActivePetition}}">{{cells.Bill}}</a></span>
+				    <p class="{{cells.ActiveBill}}"><span>Bill number: <a href="#" class="card-link">{{cells.Bill}}</a></span></p>
+				    <a href="#" class="btn btn-primary {{cells.ActivePetition}}">Take Action!</a>
 				  </div>
 				</div>
 			
